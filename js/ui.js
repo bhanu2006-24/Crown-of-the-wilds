@@ -163,33 +163,89 @@ const UI = (function() {
   // --- MODALS ---
   function openPartyModal() {
     const party = QuestEngine.getParty();
+    const reserve = QuestEngine.getReserve ? QuestEngine.getReserve() : [];
     const modal = document.getElementById('party-modal');
     const list = document.getElementById('party-list');
     if (!modal || !list) return;
 
     list.innerHTML = '';
+
+    // 1. Active Party Section
+    const activeHeader = document.createElement('div');
+    activeHeader.className = 'party-section-header';
+    activeHeader.innerHTML = `Active Party <span>(${party.length}/6 Companions)</span>`;
+    list.appendChild(activeHeader);
+
     if (party.length === 0) {
-      list.innerHTML = '<div class="empty-state">No companions recruited yet.<br><br>Find corrupted Aura Spirits in the Sewers or Wilds and use Aurelia’s <strong>Aegis Cleanse</strong> to recruit them!</div>';
+      const empty = document.createElement('div');
+      empty.className = 'empty-state';
+      empty.innerHTML = 'No companions recruited yet.<br><br>Find corrupted Aura Spirits and use Aurelia’s <strong>Aegis Cleanse</strong> to recruit them!';
+      list.appendChild(empty);
     } else {
       party.forEach((comp, idx) => {
         const item = document.createElement('div');
         item.className = 'party-card';
+        const isLead = (idx === 0);
         item.innerHTML = `
           <div class="party-info">
-            <div class="party-name">${comp.name} <span class="badge ${comp.element}">${comp.element.toUpperCase()}</span> Lv.${comp.level}</div>
+            <div class="party-name">${comp.name} <span class="badge ${comp.element}">${comp.element.toUpperCase()}</span> Lv.${comp.level} ${isLead ? '<span class="lead-badge">★ LEAD</span>' : ''}</div>
             <div class="party-title">${comp.title || 'Aura Spirit'}</div>
             <div class="party-stats">
               HP: ${comp.hp}/${comp.maxHp} | Energy: ${comp.energy}/${comp.maxEnergy} | Atk: ${comp.baseAtk} | Def: ${comp.baseDef}
             </div>
             <div class="party-ability">Field Ability: <strong>${comp.fieldAbility}</strong></div>
           </div>
-          <button class="action-btn" onclick="QuestEngine.switchActiveCompanion(${idx}); UI.openPartyModal();">Make Lead</button>
+          <div class="party-actions">
+            ${!isLead ? `<button class="action-btn" onclick="QuestEngine.switchActiveCompanion(${idx}); UI.openPartyModal();">Make Lead</button>` : ''}
+            ${party.length > 1 ? `<button class="action-btn secondary" onclick="QuestEngine.depositToReserve(${idx}); UI.openPartyModal();" title="Send to Aegis Sanctuary Reserve">To Reserve</button>` : ''}
+            ${party.length > 1 ? `<button class="action-btn danger" onclick="UI.confirmRelease(${idx}, false, '${comp.name}');" title="Release spirit to the Wilds">Release</button>` : ''}
+          </div>
         `;
         list.appendChild(item);
       });
     }
 
+    // 2. Aegis Sanctuary Reserve Section
+    const reserveHeader = document.createElement('div');
+    reserveHeader.className = 'party-section-header reserve-title';
+    reserveHeader.innerHTML = `Aegis Sanctuary Reserve <span>(${reserve.length} Stored)</span>`;
+    list.appendChild(reserveHeader);
+
+    if (reserve.length === 0) {
+      const emptyReserve = document.createElement('div');
+      emptyReserve.className = 'reserve-empty';
+      emptyReserve.innerHTML = 'No companions currently stored in the Sanctuary.<br>When your active party has 6, newly cleansed spirits are safely preserved here! You can also deposit companions here anytime.';
+      list.appendChild(emptyReserve);
+    } else {
+      reserve.forEach((rComp, rIdx) => {
+        const rItem = document.createElement('div');
+        rItem.className = 'party-card reserve-card';
+        rItem.innerHTML = `
+          <div class="party-info">
+            <div class="party-name">${rComp.name} <span class="badge ${rComp.element}">${rComp.element.toUpperCase()}</span> Lv.${rComp.level}</div>
+            <div class="party-title">${rComp.title || 'Aura Spirit'}</div>
+            <div class="party-stats">
+              HP: ${rComp.hp}/${rComp.maxHp} | Atk: ${rComp.baseAtk} | Def: ${rComp.baseDef}
+            </div>
+            <div class="party-ability">Field Ability: <strong>${rComp.fieldAbility}</strong></div>
+          </div>
+          <div class="party-actions">
+            <button class="action-btn" ${party.length >= 6 ? 'disabled title="Active party full (max 6)"' : ''} onclick="QuestEngine.withdrawFromReserve(${rIdx}); UI.openPartyModal();">Withdraw</button>
+            <button class="action-btn danger" onclick="UI.confirmRelease(${rIdx}, true, '${rComp.name}');" title="Release spirit to the Wilds">Release</button>
+          </div>
+        `;
+        list.appendChild(rItem);
+      });
+    }
+
     modal.classList.add('visible');
+  }
+
+  function confirmRelease(index, fromReserve, name) {
+    if (confirm(`Are you sure you want to release ${name} back into the peaceful wilds?`)) {
+      QuestEngine.releaseCompanion(index, fromReserve);
+      openPartyModal();
+    }
   }
 
   function openBagModal() {
@@ -239,6 +295,7 @@ const UI = (function() {
     openPartyModal,
     openBagModal,
     openCodexModal,
+    confirmRelease,
     closeModal
   };
 })();

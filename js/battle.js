@@ -161,6 +161,10 @@ const BattleEngine = (function() {
       if (enemy.hp <= 0) {
         if (enemy.isCorrupted) {
           queueMessage(`The corrupted spirit was overwhelmed by pure force!`);
+          if (isBossBattle && fragmentReward) {
+            QuestEngine.collectFragment(fragmentReward);
+            queueMessage(`Recovered Aegis Crystal Fragment #${fragmentReward}!`);
+          }
           onBattleWin(false); // Defeated without cleansing
         } else {
           queueMessage(`The opposing spirit fainted!`);
@@ -213,9 +217,11 @@ const BattleEngine = (function() {
         SoundEngine.playSFX('cleanse');
         queueMessage(`${enemy.name} has been purified and restored!`);
 
-        // Recruit into party!
-        const recruited = QuestEngine.addCompanion(enemy);
-        if (recruited) {
+        // Recruit into party or reserve!
+        const result = QuestEngine.addCompanion(enemy);
+        if (result && result.inReserve) {
+          queueMessage(`${enemy.name} was purified and sent to Aegis Sanctuary Reserve!`);
+        } else if (result) {
           queueMessage(`${enemy.name} has joined your companion party!`);
         }
 
@@ -276,6 +282,14 @@ const BattleEngine = (function() {
     queueMessage(`Your party gained ${xpGain} Aura Experience!`, () => {
       QuestEngine.awardExp(xpGain);
     });
+
+    if (enemy && (enemy.id === 'shadow_chimera' || (isBossBattle && fragmentReward === 4))) {
+      queueMessage(`The Primordial Shadow dissolves into radiant starlight!`, () => {
+        endBattle();
+        QuestEngine.triggerEpilogueCutscene();
+      });
+      return;
+    }
 
     queueMessage(`Victory!`, () => {
       endBattle();

@@ -428,21 +428,30 @@ const MapEngine = (function() {
           DialogueEngine.showObjectText('Glacierwing', 'The mythic ice-wyvern gently curls its frosted wings in slumber.');
           return;
         }
+        if ((npc.id === 'boss_malakor_climax' || npc.id === 'malakor_climax') && QuestEngine.hasFlag('chimera_cleansed')) {
+          DialogueEngine.showObjectText('Lord Malakor', 'Malakor lies defeated. The northern gate to the restored Castle Town is open!');
+          return;
+        }
 
         // Start Boss Battle!
         const spiritId = (npc.id === 'boss_mudtoad' ? 'mudtoad' :
                          (npc.id === 'boss_crab' ? 'abyssalcrab' :
                          (npc.id === 'boss_wyvern' ? 'icewyvern' :
-                         (npc.id === 'boss_chimera' ? 'shadow_chimera' : npc.id.replace('boss_', '')))));
+                         (npc.id === 'boss_chimera' || npc.id === 'boss_malakor_climax' || npc.id === 'malakor_climax' ? 'shadow_chimera' : npc.id.replace('boss_', '')))));
         let frag = 1;
         if (spiritId === 'abyssalcrab') frag = 2;
         else if (spiritId === 'icewyvern') frag = 3;
         else if (spiritId === 'shadow_chimera') frag = 4;
 
+        const cutsceneSpeaker = (npc.id === 'boss_malakor_climax' ? 'Lord Malakor' : npc.name);
+        const cutsceneText = (npc.id === 'boss_malakor_climax' ? 
+          'You are too late, Aurelia! With the void altars ignited, I summon the Primordial Shadow Chimera! Devour her light!' : 
+          (npc.dialogue || 'A fierce, primal roar reverberates across the ground!'));
+
         DialogueEngine.showCutscene([
           {
-            speaker: npc.name,
-            text: npc.dialogue || 'A fierce, primal roar reverberates across the ground!'
+            speaker: cutsceneSpeaker,
+            text: cutsceneText
           }
         ], () => {
           BattleEngine.startBattle({

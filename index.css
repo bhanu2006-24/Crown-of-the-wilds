@@ -502,7 +502,7 @@ html, body {
 }
 
 .action-btn {
-  padding: 5px 12px;
+  padding: 5px 10px;
   background: var(--aegis-blue);
   color: #0f172a;
   border: none;
@@ -510,6 +510,96 @@ html, body {
   font-weight: 700;
   font-size: 11px;
   cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.action-btn:hover:not(:disabled) {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+}
+
+.action-btn.secondary {
+  background: #334155;
+  color: #cbd5e1;
+}
+
+.action-btn.danger {
+  background: #b91c1c;
+  color: #fef2f2;
+}
+
+.action-btn.danger:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+.party-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.party-section-header {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gold-primary);
+  margin-top: 10px;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(254, 240, 138, 0.15);
+  padding-bottom: 4px;
+}
+
+.party-section-header:first-child {
+  margin-top: 0;
+}
+
+.party-section-header span {
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: none;
+}
+
+.party-section-header.reserve-title {
+  color: var(--aegis-cyan);
+  border-bottom-color: rgba(56, 189, 248, 0.2);
+  margin-top: 16px;
+}
+
+.lead-badge {
+  font-size: 8px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(234, 179, 8, 0.25);
+  color: #fef08a;
+  border: 1px solid rgba(234, 179, 8, 0.5);
+  font-weight: 800;
+}
+
+.reserve-empty {
+  padding: 12px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.reserve-card {
+  border-color: rgba(56, 189, 248, 0.12);
+  background: rgba(15, 23, 42, 0.4);
 }
 
 .badge {

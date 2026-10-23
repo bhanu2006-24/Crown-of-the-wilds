@@ -75,8 +75,24 @@
   ],
   "triggers": [
     {
-      "id": "final_boss_trigger",
+      "id": "final_boss_trigger_12",
       "x": 12,
+      "y": 4,
+      "type": "climax_battle",
+      "bossId": "malakor",
+      "chimeraId": "shadow_chimera"
+    },
+    {
+      "id": "final_boss_trigger_13",
+      "x": 13,
+      "y": 4,
+      "type": "climax_battle",
+      "bossId": "malakor",
+      "chimeraId": "shadow_chimera"
+    },
+    {
+      "id": "final_boss_trigger_11",
+      "x": 11,
       "y": 4,
       "type": "climax_battle",
       "bossId": "malakor",

@@ -8,7 +8,8 @@ const QuestEngine = (function() {
   let state = {
     currentAct: 'prologue', // 'prologue', 'act1', 'act2', 'act3', 'climax', 'epilogue'
     fragments: 0,           // 0 to 4 (Core + 3 recovered fragments)
-    party: [],              // Aura Spirit companions
+    party: [],              // Aura Spirit companions (Active party, max 6)
+    reserve: [],            // Stored companions (Aegis Sanctuary Reserve)
     inventory: [
       { id: 'aegis_salve', count: 3 },
       { id: 'aura_elixir', count: 2 },
@@ -24,11 +25,6 @@ const QuestEngine = (function() {
 
   // --- COMPANION PARTY MANAGEMENT ---
   function addCompanion(spiritData) {
-    if (state.party.length >= 6) {
-      UI.showBanner('Companion party full (Max 6)!');
-      return false;
-    }
-
     const companion = {
       id: spiritData.id,
       name: spiritData.name,
@@ -48,7 +44,6 @@ const QuestEngine = (function() {
       expToLevel: 100
     };
 
-    state.party.push(companion);
     setFlag('has_companion', true);
 
     // If recruited in sewers, remove corrupted NPC on map
@@ -57,12 +52,79 @@ const QuestEngine = (function() {
       curMap.npcs = curMap.npcs.filter(n => n.id !== 'corrupted_starter');
     }
 
-    saveGame();
-    return true;
+    if (state.party.length < 6) {
+      state.party.push(companion);
+      saveGame();
+      return { recruited: true, inReserve: false, name: companion.name };
+    } else {
+      if (!state.reserve) state.reserve = [];
+      state.reserve.push(companion);
+      saveGame();
+      UI.showBanner(`${companion.name} sent to Aegis Sanctuary Reserve!`);
+      return { recruited: true, inReserve: true, name: companion.name };
+    }
   }
 
   function getParty() {
     return state.party;
+  }
+
+  function getReserve() {
+    return state.reserve || [];
+  }
+
+  function depositToReserve(index) {
+    if (state.party.length <= 1) {
+      UI.showBanner('You must keep at least 1 companion in your active party!');
+      return false;
+    }
+    if (index >= 0 && index < state.party.length) {
+      if (!state.reserve) state.reserve = [];
+      const companion = state.party.splice(index, 1)[0];
+      state.reserve.push(companion);
+      saveGame();
+      UI.showBanner(`${companion.name} was sent to Sanctuary Reserve.`);
+      return true;
+    }
+    return false;
+  }
+
+  function withdrawFromReserve(index) {
+    if (state.party.length >= 6) {
+      UI.showBanner('Active party full (Max 6)! Send a companion to Sanctuary first.');
+      return false;
+    }
+    if (state.reserve && index >= 0 && index < state.reserve.length) {
+      const companion = state.reserve.splice(index, 1)[0];
+      state.party.push(companion);
+      saveGame();
+      UI.showBanner(`${companion.name} joined your active party!`);
+      return true;
+    }
+    return false;
+  }
+
+  function releaseCompanion(index, fromReserve = false) {
+    if (!fromReserve && state.party.length <= 1) {
+      UI.showBanner('You cannot release your only companion!');
+      return false;
+    }
+    let released = null;
+    if (fromReserve) {
+      if (state.reserve && index >= 0 && index < state.reserve.length) {
+        released = state.reserve.splice(index, 1)[0];
+      }
+    } else {
+      if (index >= 0 && index < state.party.length) {
+        released = state.party.splice(index, 1)[0];
+      }
+    }
+    if (released) {
+      saveGame();
+      UI.showBanner(`${released.name} was lovingly released back to the Wilds.`);
+      return true;
+    }
+    return false;
   }
 
   function getActiveCompanion() {
@@ -118,7 +180,6 @@ const QuestEngine = (function() {
     return state.party.some(c => c.fieldAbility === 'freeze_geyser' || c.element === 'ice');
   }
 
-  // --- STORY PROGRESSION & FRAGMENTS ---
   function collectFragment(fragmentNumber) {
     state.fragments = Math.max(state.fragments, fragmentNumber);
     setFlag(`fragment_${fragmentNumber}_collected`, true);
@@ -126,6 +187,7 @@ const QuestEngine = (function() {
     if (fragmentNumber === 1) state.currentAct = 'act2';
     else if (fragmentNumber === 2) state.currentAct = 'act3';
     else if (fragmentNumber === 3) state.currentAct = 'climax';
+    else if (fragmentNumber === 4) state.currentAct = 'epilogue';
 
     saveGame();
   }
@@ -158,7 +220,10 @@ const QuestEngine = (function() {
     if (state.fragments === 2) {
       return 'Slide across the ice paths of Whispering Peaks and cleanse Glacierwing for Fragment 3.';
     }
-    return 'Confront Lord Malakor at the Ruined Keep and cleanse the Shadow Chimera!';
+    if (state.fragments === 3 || state.currentAct === 'climax') {
+      return 'Confront Lord Malakor at the Ruined Keep and cleanse the Shadow Chimera!';
+    }
+    return 'Rejoice! The Aegis Crystal is restored. Attend Queen Aurelia’s Coronation in the Sanctum!';
   }
 
   // --- STORY TRIGGER HANDLER ---
@@ -242,7 +307,62 @@ const QuestEngine = (function() {
         isTutorial: trigger.isTutorial,
         fragmentReward: trigger.fragmentReward
       });
+    } else if (trigger.type === 'climax_battle' || trigger.id === 'final_boss_trigger') {
+      if (hasFlag('chimera_cleansed')) return;
+      DialogueEngine.showCutscene([
+        {
+          speaker: 'Lord Malakor',
+          text: 'You are too late, Aurelia! With the void altars ignited, I summon the Primordial Shadow Chimera! Devour her light!'
+        },
+        {
+          speaker: 'Princess Aurelia',
+          text: 'The four crystal fragments resonate within my Aegis Core! We will cleanse the darkness and free the Wilds!'
+        }
+      ], () => {
+        BattleEngine.startBattle({
+          spiritId: 'shadow_chimera',
+          isCorrupted: true,
+          isBoss: true,
+          fragmentReward: 4
+        });
+      });
     }
+  }
+
+  function triggerEpilogueCutscene() {
+    setFlag('chimera_cleansed', true);
+    collectFragment(4);
+    state.currentAct = 'epilogue';
+
+    DialogueEngine.showCutscene([
+      {
+        speaker: 'Narrator',
+        text: 'A blinding explosion of crystalline radiance erupts from Aurelia’s Aegis Core! The dark miasma shatters into golden motes of dawn light.'
+      },
+      {
+        speaker: 'Lord Malakor',
+        text: 'Impossible... The shadow... dissolved?! My plans... ruined!'
+      },
+      {
+        speaker: 'Princess Aurelia',
+        text: 'The four fragments are reunited! Let the sacred Aegis Crystal shine over a restored kingdom!'
+      },
+      {
+        speaker: 'Narrator',
+        text: 'With a triumphant chiming of ancient royal bells, the four crystal fragments fuse into a radiant beacon. A golden wave of peace purifies the entire realm!'
+      }
+    ], () => {
+      UI.fadeOut(() => {
+        MapEngine.loadMap('castle_restored', 12, 14).then(() => {
+          UI.fadeIn();
+          UI.showBanner('THE CORONATION OF QUEEN AURELIA — THE REALM IS RESTORED!');
+          UI.showLocationBanner('Castle Town Restored - The Coronation');
+          if (window.SoundEngine) {
+            SoundEngine.playBGM('epilogue');
+          }
+        });
+      });
+    });
   }
 
   // --- INVENTORY ---
@@ -295,6 +415,7 @@ const QuestEngine = (function() {
       const saved = localStorage.getItem('crown_of_wilds_save');
       if (saved) {
         state = JSON.parse(saved);
+        if (!state.reserve) state.reserve = [];
       }
     } catch (e) {
       console.warn('Could not load save', e);
@@ -307,6 +428,7 @@ const QuestEngine = (function() {
       currentAct: 'prologue',
       fragments: 0,
       party: [],
+      reserve: [],
       inventory: [
         { id: 'aegis_salve', count: 3 },
         { id: 'aura_elixir', count: 2 },
@@ -320,7 +442,11 @@ const QuestEngine = (function() {
   return {
     init,
     getParty,
+    getReserve,
     addCompanion,
+    depositToReserve,
+    withdrawFromReserve,
+    releaseCompanion,
     getActiveCompanion,
     switchActiveCompanion,
     healParty,
@@ -336,6 +462,7 @@ const QuestEngine = (function() {
     setFlag,
     hasFlag,
     handleTrigger,
+    triggerEpilogueCutscene,
     getInventory,
     useItem,
     getIncenseActive: () => state.incenseActive,
