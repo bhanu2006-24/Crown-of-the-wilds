@@ -9,28 +9,30 @@
   "tileData": [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+    [1, 1, 1, 0, 1, 5, 0, 1, 1, 0, 1, 1, 5, 1, 1, 1, 1, 1, 0, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 2, 2, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1],
+    [1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 5, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+    [1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 5, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 6, 6, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   ],
   "legend": {
     "0": "sewer_stone",
     "1": "sewer_wall",
-    "2": "sewer_water",
-    "4": "slimy_growth"
+    "2": "signpost",
+    "4": "slimy_growth",
+    "5": "wall_torch",
+    "6": "sunlit_exit"
   },
   "npcs": [
     {
@@ -51,11 +53,25 @@
       "description": "The iron ladder leading back to Castle Town. It is barred from above by Malakor's guards."
     },
     {
+      "x": 5,
+      "y": 2,
+      "type": "signpost",
+      "name": "Undercroft Direction Sign",
+      "description": "⬅ WEST: Castle Entrance Ladder | ➡ EAST: Undercroft Corridors & Outflow Pipe"
+    },
+    {
+      "x": 17,
+      "y": 14,
+      "type": "signpost",
+      "name": "Outflow Pipe Sign",
+      "description": "➡ EAST: River Outflow Pipe leading to Oakhaven Village."
+    },
+    {
       "x": 19,
       "y": 15,
       "type": "drain_exit",
-      "name": "Outflow Pipe",
-      "description": "Daylight streams through the outflow pipe! It leads out into the pastoral meadows of Oakhaven Village."
+      "name": "Sunlit Outflow Pipe",
+      "description": "Bright morning sunlight streams through the outflow pipe! It leads into the pastoral meadows of Oakhaven Village."
     }
   ],
   "triggers": [

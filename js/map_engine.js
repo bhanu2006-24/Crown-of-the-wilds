@@ -510,6 +510,52 @@ const MapEngine = (function() {
       ctx.drawImage(followerSprite, Math.floor(followX), Math.floor(followY));
     }
 
+    // 5. Render Animated Objective Waypoint Markers (Gates & Signs)
+    const bounce = Math.sin(Date.now() * 0.006) * 3;
+    let targetWaypoint = null;
+
+    if (currentMap.mapId === 'castle_town') {
+      if (!QuestEngine.hasFlag('shattering_complete')) {
+        targetWaypoint = { x: 12, y: 5, label: 'Aegis Sanctum', color: '#fef08a' };
+      } else {
+        targetWaypoint = { x: 2, y: 16, label: 'Sewer Escape', color: '#38bdf8' };
+      }
+    } else if (currentMap.mapId === 'castle_sewers') {
+      if (!QuestEngine.hasFlag('has_companion')) {
+        targetWaypoint = { x: 11, y: 14, label: 'Corrupted Fox', color: '#c084fc' };
+      } else {
+        targetWaypoint = { x: 19, y: 15, label: 'Outflow to Wilds', color: '#4ade80' };
+      }
+    }
+
+    if (targetWaypoint) {
+      const wx = targetWaypoint.x * 32 + 16;
+      const wy = targetWaypoint.y * 32 - 6 + bounce;
+
+      // Pulsing downward indicator arrow
+      ctx.fillStyle = targetWaypoint.color;
+      ctx.beginPath();
+      ctx.moveTo(wx, wy);
+      ctx.lineTo(wx - 5, wy - 8);
+      ctx.lineTo(wx + 5, wy - 8);
+      ctx.closePath();
+      ctx.fill();
+
+      // Tooltip pill
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
+      ctx.strokeStyle = targetWaypoint.color;
+      ctx.lineWidth = 1;
+      const pillW = targetWaypoint.label.length * 7 + 12;
+      ctx.fillRect(wx - pillW / 2, wy - 22, pillW, 14);
+      ctx.strokeRect(wx - pillW / 2, wy - 22, pillW, 14);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 9px "Outfit", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(targetWaypoint.label, wx, wy - 12);
+      ctx.textAlign = 'left';
+    }
+
     ctx.restore();
 
     // 5. Render Atmospheric Weather Particles

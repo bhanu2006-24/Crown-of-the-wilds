@@ -179,6 +179,106 @@ const TileGenerator = (function() {
     return canvas;
   }
 
+  // --- NAVIGATION TILES: GATES, SIGNPOSTS, TORCHES ---
+  function drawSignpost() {
+    const { canvas, ctx } = createCanvas();
+    ctx.drawImage(drawStoneFloor(), 0, 0);
+    // Wooden post
+    ctx.fillStyle = '#6b4423';
+    ctx.fillRect(14, 16, 4, 14);
+    // Wooden board
+    ctx.fillStyle = '#8b5a2b';
+    ctx.fillRect(6, 6, 20, 11);
+    ctx.fillStyle = '#a6723c';
+    ctx.fillRect(7, 7, 18, 9);
+    // Pointer arrow
+    ctx.fillStyle = '#fef08a';
+    ctx.fillRect(15, 9, 2, 5);
+    ctx.fillRect(14, 10, 4, 2);
+    return canvas;
+  }
+
+  function drawSanctumGate() {
+    const { canvas, ctx } = createCanvas();
+    ctx.drawImage(drawStoneFloor(), 0, 0);
+    // Royal marble pillars on sides
+    ctx.fillStyle = '#d4af37';
+    ctx.fillRect(0, 0, 6, 32);
+    ctx.fillRect(26, 0, 6, 32);
+    // Golden arch top
+    ctx.fillStyle = '#fef08a';
+    ctx.fillRect(0, 0, 32, 6);
+    // Royal purple banner
+    ctx.fillStyle = '#7c3aed';
+    ctx.fillRect(8, 0, 16, 12);
+    ctx.fillStyle = '#fef08a';
+    ctx.fillRect(15, 3, 2, 6);
+    ctx.fillRect(13, 5, 6, 2);
+    return canvas;
+  }
+
+  function drawWallTorch(frame = 0) {
+    const { canvas, ctx } = createCanvas();
+    ctx.drawImage(drawStoneWall(), 0, 0);
+    // Iron sconce
+    ctx.fillStyle = '#1e293b';
+    ctx.fillRect(14, 14, 4, 8);
+    ctx.fillRect(12, 12, 8, 3);
+    // Flickering flame
+    const flicker = (frame % 3) * 1.5;
+    ctx.fillStyle = '#ea580c';
+    ctx.beginPath();
+    ctx.arc(16, 10 - flicker, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#fef08a';
+    ctx.beginPath();
+    ctx.arc(16, 9 - flicker, 3, 0, Math.PI * 2);
+    ctx.fill();
+    return canvas;
+  }
+
+  function drawSewerGrateOpen(frame = 0) {
+    const { canvas, ctx } = createCanvas();
+    ctx.drawImage(drawStoneFloor(), 0, 0);
+    // Circular pit
+    ctx.fillStyle = '#0f172a';
+    ctx.beginPath();
+    ctx.ellipse(16, 16, 13, 11, 0, 0, Math.PI * 2);
+    ctx.fill();
+    // Iron bars
+    ctx.fillStyle = '#64748b';
+    ctx.fillRect(6, 15, 20, 2);
+    ctx.fillRect(15, 6, 2, 20);
+    // Pulsing cyan magic aura indicating secret entrance!
+    const auraPulse = (Math.sin(frame * 1.2) + 1) * 0.35 + 0.3;
+    ctx.strokeStyle = `rgba(56, 189, 248, ${auraPulse})`;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(3, 3, 26, 26);
+    ctx.fillStyle = `rgba(56, 189, 248, ${auraPulse * 0.8})`;
+    ctx.fillRect(14, 12, 4, 8);
+    return canvas;
+  }
+
+  function drawSunlitExit() {
+    const { canvas, ctx } = createCanvas();
+    ctx.fillStyle = '#1e293b';
+    ctx.fillRect(0, 0, 32, 32);
+    // Radiant daylight outflow
+    const grad = ctx.createLinearGradient(0, 0, 32, 32);
+    grad.addColorStop(0, '#fef08a');
+    grad.addColorStop(0.5, '#7dd3fc');
+    grad.addColorStop(1, '#1e293b');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(16, 16, 14, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(16, 16, 8, 0, Math.PI * 2);
+    ctx.fill();
+    return canvas;
+  }
+
   // --- SEWER TILES ---
   function drawSewerStone() {
     const { canvas, ctx } = createCanvas();
@@ -644,6 +744,11 @@ const TileGenerator = (function() {
     cache['aegis_crystal'] = drawAegisCrystal(false);
     cache['crystal_altar'] = drawAegisCrystal(true);
     cache['sanctum_wall'] = drawStoneWall();
+    cache['signpost'] = drawSignpost();
+    cache['sanctum_gate'] = drawSanctumGate();
+    cache['wall_torch'] = drawWallTorch(0);
+    cache['sewer_grate_open'] = drawSewerGrateOpen(0);
+    cache['sunlit_exit'] = drawSunlitExit();
 
     // Sewer
     cache['sewer_stone'] = drawSewerStone();
@@ -695,6 +800,8 @@ const TileGenerator = (function() {
       if (name === 'polluted_river') return drawPollutedRiver(animFrame);
       if (name === 'deep_ocean') return drawDeepOcean(animFrame);
       if (name === 'shadow_fire_pit') return drawShadowFirePit(animFrame);
+      if (name === 'wall_torch') return drawWallTorch(animFrame);
+      if (name === 'sewer_grate_open') return drawSewerGrateOpen(animFrame);
       return cache[name] || cache['stone_floor'];
     },
     TILE_SIZE
