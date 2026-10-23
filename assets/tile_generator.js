@@ -427,6 +427,91 @@ const TileGenerator = (function() {
     return canvas;
   }
 
+  function drawCleanRiver(frame = 0) {
+    const { canvas, ctx } = createCanvas();
+    // Beautiful pure sparkling azure water
+    ctx.fillStyle = '#0284c7';
+    ctx.fillRect(0, 0, 32, 32);
+    // Gentle flowing wave currents
+    ctx.fillStyle = '#38bdf8';
+    const offset = (frame % 4) * 4;
+    ctx.fillRect(0, (3 + offset) % 32, 32, 4);
+    ctx.fillRect(0, (19 + offset) % 32, 32, 4);
+    // Sparkling sunlit highlights
+    ctx.fillStyle = '#bae6fd';
+    ctx.fillRect(8, (5 + offset) % 32, 6, 2);
+    ctx.fillRect(20, (21 + offset) % 32, 7, 2);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(10, (6 + offset) % 32, 2, 1);
+    ctx.fillRect(22, (22 + offset) % 32, 2, 1);
+    return canvas;
+  }
+
+  function drawWoodenBridge() {
+    const { canvas, ctx } = createCanvas();
+    // River water under bridge
+    ctx.fillStyle = '#23445e';
+    ctx.fillRect(0, 0, 32, 32);
+    // Wooden planks (horizontal bridge deck)
+    ctx.fillStyle = '#6d4c2d';
+    ctx.fillRect(0, 3, 32, 26);
+    // Individual planks with spacing & grain
+    for (let y = 4; y < 28; y += 6) {
+      ctx.fillStyle = '#8a623a';
+      ctx.fillRect(0, y, 32, 5);
+      // Plank wood grain lines
+      ctx.fillStyle = '#593e22';
+      ctx.fillRect(0, y + 5, 32, 1);
+      // Iron nail studs on plank ends
+      ctx.fillStyle = '#2e2319';
+      ctx.fillRect(2, y + 2, 2, 2);
+      ctx.fillRect(28, y + 2, 2, 2);
+    }
+    // Top & Bottom handrails with support posts
+    ctx.fillStyle = '#4a331c';
+    ctx.fillRect(0, 2, 32, 3);
+    ctx.fillRect(0, 27, 32, 3);
+    // Rope ties / post highlights
+    ctx.fillStyle = '#b8894d';
+    ctx.fillRect(0, 1, 32, 1);
+    ctx.fillRect(6, 0, 4, 5);
+    ctx.fillRect(22, 0, 4, 5);
+    ctx.fillRect(6, 27, 4, 5);
+    ctx.fillRect(22, 27, 4, 5);
+    return canvas;
+  }
+
+  function drawWeirStone() {
+    const { canvas, ctx } = createCanvas();
+    // Heavy granite masonry blocks
+    ctx.fillStyle = '#3f474f';
+    ctx.fillRect(0, 0, 32, 32);
+    // Upper stone bevel
+    ctx.fillStyle = '#59636e';
+    ctx.fillRect(1, 1, 14, 14);
+    ctx.fillRect(17, 1, 14, 14);
+    ctx.fillRect(1, 17, 14, 14);
+    ctx.fillRect(17, 17, 14, 14);
+    // Stone highlights
+    ctx.fillStyle = '#7a8694';
+    ctx.fillRect(2, 2, 12, 2);
+    ctx.fillRect(18, 2, 12, 2);
+    ctx.fillRect(2, 18, 12, 2);
+    ctx.fillRect(18, 18, 12, 2);
+    // Mortar channels
+    ctx.fillStyle = '#242a30';
+    ctx.fillRect(0, 15, 32, 2);
+    ctx.fillRect(15, 0, 2, 32);
+    // River moss & water spray on weir
+    ctx.fillStyle = '#386641';
+    ctx.fillRect(2, 12, 6, 3);
+    ctx.fillRect(19, 25, 7, 3);
+    ctx.fillStyle = 'rgba(125, 232, 234, 0.4)';
+    ctx.fillRect(6, 0, 8, 2);
+    ctx.fillRect(20, 30, 8, 2);
+    return canvas;
+  }
+
   function drawFarmCrops() {
     const { canvas, ctx } = createCanvas();
     // Furrow soil
@@ -761,6 +846,9 @@ const TileGenerator = (function() {
     cache['tall_wild_grass'] = drawTallWildGrass();
     cache['dense_trees'] = drawDenseTrees();
     cache['polluted_river'] = drawPollutedRiver(0);
+    cache['clean_river'] = drawCleanRiver(0);
+    cache['wooden_bridge'] = drawWoodenBridge();
+    cache['weir_stone'] = drawWeirStone();
     cache['farm_crops'] = drawFarmCrops();
 
     // Coastal
@@ -798,6 +886,7 @@ const TileGenerator = (function() {
     getTile(name, animFrame = 0) {
       if (name === 'sewer_water') return drawSewerWater(animFrame);
       if (name === 'polluted_river') return drawPollutedRiver(animFrame);
+      if (name === 'clean_river') return drawCleanRiver(animFrame);
       if (name === 'deep_ocean') return drawDeepOcean(animFrame);
       if (name === 'shadow_fire_pit') return drawShadowFirePit(animFrame);
       if (name === 'wall_torch') return drawWallTorch(animFrame);

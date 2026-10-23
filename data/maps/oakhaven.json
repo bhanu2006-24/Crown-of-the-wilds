@@ -8,13 +8,13 @@
   "spawn": { "x": 3, "y": 4 },
   "tileData": [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 0, 0, 5, 5, 5, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 5, 5, 5, 0, 0, 0, 0, 1],
     [1, 0, 0, 1, 1, 0, 0, 0, 0, 4, 4, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 1],
-    [1, 0, 0, 1, 1, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 1],
+    [1, 0, 0, 1, 1, 0, 0, 0, 4, 4, 4, 0, 6, 6, 6, 6, 0, 0, 0, 0, 0, 4, 4, 4, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 6, 6, 6, 6, 0, 0, 0, 0, 0, 4, 4, 4, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 1],
     [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1],
@@ -22,12 +22,12 @@
     [1, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 0, 0, 4, 4, 4, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 0, 4, 4, 4, 4, 4, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1]
   ],
   "legend": {
@@ -35,7 +35,10 @@
     "1": "dense_trees",
     "2": "polluted_river",
     "4": "tall_wild_grass",
-    "5": "farm_crops"
+    "5": "farm_crops",
+    "6": "wooden_bridge",
+    "7": "weir_stone",
+    "8": "signpost"
   },
   "npcs": [
     {
@@ -44,7 +47,7 @@
       "sprite": "mayor",
       "x": 6,
       "y": 6,
-      "dialogue": "Traveler! The river has turned a ghastly purple! Our sacred sweeping-horned cattle are terrified and frenzied. Upriver at the weir, a titanic Mud-Toad is corrupting the spring!"
+      "dialogue": "Traveler! The river has turned a ghastly purple! Upriver at the stone weir, a titanic Mud-Toad is corrupting the spring. Purify it with your Aegis Core to open the road south!"
     },
     {
       "id": "farmer_barnaby",
@@ -52,7 +55,7 @@
       "sprite": "farmer",
       "x": 19,
       "y": 3,
-      "dialogue": "My prize cattle, Bramblehorn, bolted toward the marsh! If you can soothe them with your Aura, they will gladly protect you."
+      "dialogue": "Our sacred cattle Bramblehorn bolted into the marsh grasses! If you soothe them in wild battle, they will protect you with mighty horns."
     },
     {
       "id": "boss_mudtoad",
@@ -66,11 +69,32 @@
   ],
   "interactive": [
     {
-      "x": 13,
+      "x": 2,
+      "y": 3,
+      "type": "sewer_pipe",
+      "name": "Castle Sewer Outflow",
+      "description": "The outflow pipe from the castle undercroft. You can climb back into the sewers if needed."
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "signpost",
+      "name": "Oakhaven Welcome Sign",
+      "description": "➡ EAST: Village Square & Shrine of the Wilds | ⬆ NORTH: River Weir | ⬇ SOUTH: Road to Rustport"
+    },
+    {
+      "x": 11,
+      "y": 3,
+      "type": "signpost",
+      "name": "Weir Warning Sign",
+      "description": "⚠ DANGER: Toxic miasma upstream at the River Weir. A monstrous Mud-Toad lurks upon the stones!"
+    },
+    {
+      "x": 11,
       "y": 6,
-      "type": "bridge",
-      "name": "Old Willow Bridge",
-      "description": "A sturdy wooden bridge spanning the river. Below, the water churns with purple miasma."
+      "type": "signpost",
+      "name": "Old Willow Bridge Sign",
+      "description": "➡ EAST: Willow Bridge crossing to the East Farmlands and Sacred Shrine."
     },
     {
       "x": 20,
@@ -78,13 +102,50 @@
       "type": "sacred_shrine",
       "name": "Shrine of the Wilds",
       "description": "An ancient stone shrine where resting spirits recover their vigor and health."
+    },
+    {
+      "x": 21,
+      "y": 20,
+      "type": "signpost",
+      "name": "Rustport Highway Sign",
+      "description": "⬇ SOUTH: Coastal Highway to Rustport Harbor. (Clear passage for bearers of Fragment 1)."
     }
   ],
   "triggers": [
     {
-      "id": "mudtoad_boss_trigger",
+      "id": "mudtoad_boss_trigger_13",
       "x": 13,
       "y": 3,
+      "type": "battle",
+      "spiritId": "mudtoad",
+      "isCorrupted": true,
+      "isBoss": true,
+      "fragmentReward": 1
+    },
+    {
+      "id": "mudtoad_boss_trigger_14",
+      "x": 14,
+      "y": 3,
+      "type": "battle",
+      "spiritId": "mudtoad",
+      "isCorrupted": true,
+      "isBoss": true,
+      "fragmentReward": 1
+    },
+    {
+      "id": "mudtoad_boss_trigger_12",
+      "x": 12,
+      "y": 2,
+      "type": "battle",
+      "spiritId": "mudtoad",
+      "isCorrupted": true,
+      "isBoss": true,
+      "fragmentReward": 1
+    },
+    {
+      "id": "mudtoad_boss_trigger_15",
+      "x": 15,
+      "y": 2,
       "type": "battle",
       "spiritId": "mudtoad",
       "isCorrupted": true,
@@ -123,24 +184,24 @@
       "y": 5,
       "w": 4,
       "h": 4,
-      "encounterRate": 0.25,
-      "spirits": ["bramblehorn", "sylphwing"]
+      "encounterRate": 0.22,
+      "spirits": ["sylphwing", "bramblehorn"]
     },
     {
       "x": 4,
       "y": 11,
       "w": 4,
       "h": 4,
-      "encounterRate": 0.25,
-      "spirits": ["sylphwing", "bloomseed"]
+      "encounterRate": 0.22,
+      "spirits": ["sylphwing", "pyropaw"]
     },
     {
       "x": 17,
       "y": 15,
       "w": 5,
       "h": 3,
-      "encounterRate": 0.3,
-      "spirits": ["bramblehorn", "sparklynx"]
+      "encounterRate": 0.25,
+      "spirits": ["bramblehorn", "sylphwing"]
     }
   ]
 }

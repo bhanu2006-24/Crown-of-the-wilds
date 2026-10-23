@@ -107,7 +107,7 @@ const QuestEngine = (function() {
 
   // --- FIELD ABILITIES ---
   function hasWaterCrossing() {
-    return state.party.some(c => c.fieldAbility === 'water_step' || c.element === 'water');
+    return state.party.some(c => c.fieldAbility === 'water_step' || c.fieldAbility === 'mud_step' || c.element === 'water');
   }
 
   function hasBurnThorns() {

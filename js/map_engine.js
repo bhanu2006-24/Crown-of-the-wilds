@@ -138,7 +138,11 @@ const MapEngine = (function() {
 
   function getTileName(tileCode) {
     if (!currentMap || !currentMap.legend) return 'stone_floor';
-    return currentMap.legend[tileCode.toString()] || 'stone_floor';
+    let name = currentMap.legend[tileCode.toString()] || 'stone_floor';
+    if (name === 'polluted_river' && QuestEngine.hasFlag('fragment_1_collected')) {
+      return 'clean_river';
+    }
+    return name;
   }
 
   function getCrateAt(x, y) {
@@ -336,7 +340,16 @@ const MapEngine = (function() {
       for (const w of currentMap.warps) {
         if (w.x === x && w.y === y) {
           if (w.condition && !QuestEngine.hasFlag(w.condition)) {
-            UI.showBanner('The path forward is barred.');
+            if (w.condition === 'fragment_1_collected') {
+              UI.showBanner('The road is choked with miasma! Cleanse Goliath Mud-Toad at the Weir first.');
+            } else if (w.condition === 'fragment_2_collected') {
+              UI.showBanner('The mountain trail is blockaded! Recover Fragment 2 from Abyssal Crab first.');
+            } else if (w.condition === 'fragment_3_collected') {
+              UI.showBanner('Freezing blizzards block the path! Purify Glacierwing on Whispering Peaks first.');
+            } else {
+              UI.showBanner('The path forward is barred.');
+            }
+            SoundEngine.playSFX('bump');
             return;
           }
           // Execute Warp!
@@ -356,6 +369,7 @@ const MapEngine = (function() {
       for (const t of currentMap.triggers) {
         if (t.x === x && t.y === y) {
           if (t.id && QuestEngine.hasFlag(t.id + '_done')) continue;
+          if (t.fragmentReward && QuestEngine.hasFlag('fragment_' + t.fragmentReward + '_collected')) continue;
           QuestEngine.handleTrigger(t);
           return;
         }
@@ -399,6 +413,62 @@ const MapEngine = (function() {
         QuestEngine.handleTrigger({ id: 'sanctum_cutscene', event: 'shattering_cutscene' });
         return;
       }
+
+      // Check Boss NPCs
+      if (npc.isBoss || npc.id.startsWith('boss_')) {
+        if (npc.id === 'boss_mudtoad' && QuestEngine.hasFlag('fragment_1_collected')) {
+          DialogueEngine.showObjectText('Goliath Mud-Toad', 'The mighty toad spirit croaks softly in peaceful harmony with the river.');
+          return;
+        }
+        if (npc.id === 'boss_crab' && QuestEngine.hasFlag('fragment_2_collected')) {
+          DialogueEngine.showObjectText('Abyssal Crab', 'The giant reef crab rests calmly near the tide pools.');
+          return;
+        }
+        if (npc.id === 'boss_wyvern' && QuestEngine.hasFlag('fragment_3_collected')) {
+          DialogueEngine.showObjectText('Glacierwing', 'The mythic ice-wyvern gently curls its frosted wings in slumber.');
+          return;
+        }
+
+        // Start Boss Battle!
+        const spiritId = (npc.id === 'boss_mudtoad' ? 'mudtoad' :
+                         (npc.id === 'boss_crab' ? 'abyssalcrab' :
+                         (npc.id === 'boss_wyvern' ? 'icewyvern' :
+                         (npc.id === 'boss_chimera' ? 'shadow_chimera' : npc.id.replace('boss_', '')))));
+        let frag = 1;
+        if (spiritId === 'abyssalcrab') frag = 2;
+        else if (spiritId === 'icewyvern') frag = 3;
+        else if (spiritId === 'shadow_chimera') frag = 4;
+
+        DialogueEngine.showCutscene([
+          {
+            speaker: npc.name,
+            text: npc.dialogue || 'A fierce, primal roar reverberates across the ground!'
+          }
+        ], () => {
+          BattleEngine.startBattle({
+            spiritId: spiritId,
+            isCorrupted: true,
+            isBoss: true,
+            fragmentReward: frag
+          });
+        });
+        return;
+      }
+
+      // Dynamic dialogue for Mayor Cedric & Farmer Barnaby
+      if (npc.id === 'mayor_cedric') {
+        if (QuestEngine.hasFlag('fragment_1_collected')) {
+          DialogueEngine.showObjectText('Mayor Cedric', 'Princess Aurelia, you cleansed the Goliath Mud-Toad and purified our waters! The road south to Rustport Harbor is now open. We are forever in your debt!');
+          return;
+        }
+      }
+      if (npc.id === 'farmer_barnaby') {
+        if (QuestEngine.hasFlag('fragment_1_collected')) {
+          DialogueEngine.showObjectText('Farmer Barnaby', 'The cattle are calm and the river is crystal clear once more! Thank you, Your Highness!');
+          return;
+        }
+      }
+
       DialogueEngine.startDialogue(npc);
       return;
     }
@@ -423,6 +493,16 @@ const MapEngine = (function() {
           });
           return;
         }
+
+        // Sacred Shrine: Rest & Heal Party
+        if (obj.type === 'sacred_shrine' || obj.type === 'shrine') {
+          QuestEngine.healParty();
+          SoundEngine.playSFX('cleanse');
+          UI.showBanner('Your companion spirits have been fully restored!');
+          DialogueEngine.showObjectText(obj.name, 'A warm golden light envelops you. Your companion spirits are completely restored!');
+          return;
+        }
+
         DialogueEngine.showObjectText(obj.name, obj.description);
         return;
       }
@@ -533,6 +613,26 @@ const MapEngine = (function() {
       } else {
         targetWaypoint = { x: 19, y: 15, label: 'Outflow to Wilds', color: '#4ade80' };
       }
+    } else if (currentMap.mapId === 'oakhaven') {
+      if (!QuestEngine.hasFlag('fragment_1_collected')) {
+        targetWaypoint = { x: 13, y: 2, label: 'Goliath Mud-Toad (Boss)', color: '#c084fc' };
+      } else {
+        targetWaypoint = { x: 22, y: 21, label: 'Road to Rustport', color: '#38bdf8' };
+      }
+    } else if (currentMap.mapId === 'rustport') {
+      if (!QuestEngine.hasFlag('fragment_2_collected')) {
+        targetWaypoint = { x: 20, y: 18, label: 'Abyssal Crab (Boss)', color: '#c084fc' };
+      } else {
+        targetWaypoint = { x: 9, y: 21, label: 'Whispering Peaks', color: '#38bdf8' };
+      }
+    } else if (currentMap.mapId === 'whispering_peaks') {
+      if (!QuestEngine.hasFlag('fragment_3_collected')) {
+        targetWaypoint = { x: 13, y: 3, label: 'Glacierwing (Boss)', color: '#c084fc' };
+      } else {
+        targetWaypoint = { x: 13, y: 21, label: 'Ruined Keep', color: '#38bdf8' };
+      }
+    } else if (currentMap.mapId === 'ruined_keep') {
+      targetWaypoint = { x: 12, y: 4, label: 'Lord Malakor', color: '#f87171' };
     }
 
     if (targetWaypoint) {
