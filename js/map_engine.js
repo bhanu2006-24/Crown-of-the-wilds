@@ -151,21 +151,28 @@ const MapEngine = (function() {
   }
 
   function isTileWalkable(x, y) {
-    const tile = getTileAt(x, y);
+    const tileCode = getTileAt(x, y);
+    const tileName = getTileName(tileCode);
 
-    // 0 = Walkable, 3 = Carpet / Ice / Pier / Wood, 4 = Tall grass / Slimy growth, 5 = Crops
-    // 1 = Solid wall, 6 = Pillar, 9 = Sanctum wall
-    if (tile === 1 || tile === 6 || tile === 7 || tile === 8 || tile === 9) {
+    // Explicit solid obstacle tiles (walls, pillars, altars, signs)
+    const solidNames = [
+      'stone_wall', 'sewer_wall', 'warehouse_wall', 'ruined_wall',
+      'frosted_rock', 'radiant_wall', 'dense_trees',
+      'pillar', 'monastery_pillar', 'flower_pillar',
+      'aegis_crystal', 'crystal_altar', 'void_altar', 'sanctum_wall',
+      'signpost'
+    ];
+
+    if (solidNames.includes(tileName)) {
       return false;
     }
 
-    // Water tile (2)
-    if (tile === 2) {
-      // Check if crate was pushed into this water tile to make bridge
+    // Water & Hazard tiles (require water companion or pushed crate bridge)
+    const waterNames = ['sewer_water', 'polluted_river', 'deep_ocean', 'shadow_fire_pit'];
+    if (waterNames.includes(tileName)) {
       const crateInWater = crates.find(c => c.x === x && c.y === y && c.inWater);
       if (crateInWater) return true;
 
-      // Check if player has Water Companion ability
       if (QuestEngine.hasWaterCrossing()) {
         return true;
       }

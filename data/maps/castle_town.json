@@ -101,6 +101,20 @@
     {
       "id": "sanctum_cutscene",
       "x": 12,
+      "y": 5,
+      "type": "event",
+      "event": "shattering_cutscene"
+    },
+    {
+      "id": "sanctum_cutscene_11",
+      "x": 11,
+      "y": 5,
+      "type": "event",
+      "event": "shattering_cutscene"
+    },
+    {
+      "id": "sanctum_cutscene_4",
+      "x": 12,
       "y": 4,
       "type": "event",
       "event": "shattering_cutscene"
