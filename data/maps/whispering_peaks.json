@@ -1,0 +1,132 @@
+{
+  "mapId": "whispering_peaks",
+  "mapName": "The Whispering Peaks & Ancient Monastery",
+  "act": "Act 3",
+  "width": 26,
+  "height": 24,
+  "theme": "snow",
+  "spawn": { "x": 3, "y": 3 },
+  "tileData": [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 6, 6, 0, 0, 0, 0, 1],
+    [1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 6, 6, 0, 0, 0, 0, 1],
+    [1, 1, 1, 0, 0, 1, 3, 3, 3, 3, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1, 3, 3, 3, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1, 3, 1, 3, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1, 3, 3, 3, 3, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1],
+    [1, 1, 1, 0, 0, 1, 3, 3, 3, 3, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 1, 0, 0, 1],
+    [1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 3, 3, 3, 3, 1, 3, 3, 3, 1, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 1, 3, 3, 3, 3, 1, 3, 1, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 1, 3, 3, 3, 3, 1, 0, 0, 1],
+    [1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 1, 3, 3, 1, 0, 0, 1],
+    [1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
+    [1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1]
+  ],
+  "legend": {
+    "0": "snow_path",
+    "1": "frosted_rock",
+    "3": "slick_ice",
+    "6": "monastery_pillar"
+  },
+  "npcs": [
+    {
+      "id": "elder_kaelen",
+      "name": "Elder Kaelen",
+      "sprite": "monk",
+      "x": 20,
+      "y": 3,
+      "dialogue": "Princess Aurelia... You must hear the ancient truth! The Aegis Crystal is NOT merely a relic of royalty—it is an ancient seal binding the primeval demon: the Shadow Chimera! By breaking it, Malakor is preparing to awaken the apocalyptic void!"
+    },
+    {
+      "id": "monk_tomas",
+      "name": "Brother Tomas",
+      "sprite": "monk",
+      "x": 5,
+      "y": 8,
+      "dialogue": "The ice here is completely frictionless! Once you step on it, you will slide until you strike a stone wall or snowbank."
+    },
+    {
+      "id": "boss_icewyvern",
+      "name": "Ice-Wyvern Spirit",
+      "sprite": "icewyvern_corrupt",
+      "x": 12,
+      "y": 21,
+      "isBoss": true,
+      "dialogue": "ROOOAAAR! Crystalline frost and blizzard winds converge around the dragon of the peaks!"
+    }
+  ],
+  "interactive": [
+    {
+      "x": 21,
+      "y": 2,
+      "type": "ancient_tome",
+      "name": "Chronicles of Aegis",
+      "description": "An ancient leather-bound chronicle confirming that the Aegis Crystal binds the primeval Shadow Chimera."
+    }
+  ],
+  "triggers": [
+    {
+      "id": "icewyvern_boss_trigger",
+      "x": 12,
+      "y": 22,
+      "type": "battle",
+      "spiritId": "icewyvern",
+      "isCorrupted": true,
+      "isBoss": true,
+      "fragmentReward": 3
+    }
+  ],
+  "warps": [
+    {
+      "x": 2,
+      "y": 3,
+      "targetMap": "rustport",
+      "targetX": 9,
+      "targetY": 20
+    },
+    {
+      "x": 22,
+      "y": 23,
+      "targetMap": "ruined_keep",
+      "targetX": 12,
+      "targetY": 21,
+      "condition": "fragment_3_collected"
+    },
+    {
+      "x": 23,
+      "y": 23,
+      "targetMap": "ruined_keep",
+      "targetX": 12,
+      "targetY": 21,
+      "condition": "fragment_3_collected"
+    }
+  ],
+  "wildZones": [
+    {
+      "x": 10,
+      "y": 2,
+      "w": 5,
+      "h": 3,
+      "encounterRate": 0.25,
+      "spirits": ["frostlynx", "icewing"]
+    },
+    {
+      "x": 1,
+      "y": 14,
+      "w": 4,
+      "h": 3,
+      "encounterRate": 0.25,
+      "spirits": ["frostlynx", "glaciercub"]
+    }
+  ]
+}

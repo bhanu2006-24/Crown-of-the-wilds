@@ -1,0 +1,121 @@
+{
+  "mapId": "ruined_keep",
+  "mapName": "The Ruined Keep - The Wastelands",
+  "act": "The Climax",
+  "width": 26,
+  "height": 24,
+  "theme": "wasteland",
+  "spawn": { "x": 12, "y": 21 },
+  "tileData": [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 8, 8, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0, 0, 0, 0, 1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 0, 0, 1, 1, 2, 2, 1, 0, 0, 0, 0, 1, 2, 2, 1, 1, 0, 0, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0, 0, 1, 1, 2, 2, 1, 0, 0, 0, 0, 1, 2, 2, 1, 1, 0, 0, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  ],
+  "legend": {
+    "0": "wasteland_stone",
+    "1": "ruined_wall",
+    "2": "shadow_fire_pit",
+    "8": "void_altar"
+  },
+  "npcs": [
+    {
+      "id": "ally_cedric",
+      "name": "Mayor Cedric",
+      "sprite": "mayor",
+      "x": 8,
+      "y": 21,
+      "dialogue": "Aurelia! The folk of Oakhaven stand with you! We will hold the outer perimeter against Malakor's minions!"
+    },
+    {
+      "id": "ally_drake",
+      "name": "Captain Drake",
+      "sprite": "captain",
+      "x": 16,
+      "y": 21,
+      "dialogue": "Rustport's sailors have brought iron and cannon fire! Strike at Malakor's heart—we have your flank covered!"
+    },
+    {
+      "id": "ally_kaelen",
+      "name": "Elder Kaelen",
+      "sprite": "monk",
+      "x": 11,
+      "y": 18,
+      "dialogue": "Aurelia, take my blessing! Channel the three fragments alongside your Aegis Core. When the demon rises, only total Aegis Resonance can cleanse the Void!"
+    },
+    {
+      "id": "boss_malakor_climax",
+      "name": "Lord Malakor",
+      "sprite": "malakor",
+      "x": 12,
+      "y": 3,
+      "isBoss": true,
+      "dialogue": "You are too late, little princess! The Aegis Crystal is shattered, and the Primordial Shadow Chimera answers my call!"
+    }
+  ],
+  "triggers": [
+    {
+      "id": "final_boss_trigger",
+      "x": 12,
+      "y": 4,
+      "type": "climax_battle",
+      "bossId": "malakor",
+      "chimeraId": "shadow_chimera"
+    }
+  ],
+  "warps": [
+    {
+      "x": 12,
+      "y": 23,
+      "targetMap": "whispering_peaks",
+      "targetX": 22,
+      "targetY": 22
+    },
+    {
+      "x": 12,
+      "y": 1,
+      "targetMap": "castle_restored",
+      "targetX": 12,
+      "targetY": 14,
+      "condition": "chimera_cleansed"
+    }
+  ],
+  "wildZones": [
+    {
+      "x": 1,
+      "y": 7,
+      "w": 5,
+      "h": 4,
+      "encounterRate": 0.3,
+      "spirits": ["voidhound", "shadowflame"]
+    },
+    {
+      "x": 19,
+      "y": 7,
+      "w": 5,
+      "h": 4,
+      "encounterRate": 0.3,
+      "spirits": ["voidhound", "shadowgargoyle"]
+    }
+  ]
+}

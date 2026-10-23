@@ -1,0 +1,132 @@
+{
+  "mapId": "rustport",
+  "mapName": "Rustport Harbor - The Blockaded Coast",
+  "act": "Act 2",
+  "width": 26,
+  "height": 22,
+  "theme": "coastal",
+  "spawn": { "x": 3, "y": 3 },
+  "tileData": [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 1, 1, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 1, 1, 1],
+    [1, 1, 1, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 1, 1, 1],
+    [1, 2, 2, 2, 2, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, 1],
+    [1, 1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 3, 2, 2, 1],
+    [1, 1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 3, 2, 2, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 3, 2, 2, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 3, 2, 2, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  ],
+  "legend": {
+    "0": "cobblestone_pier",
+    "1": "warehouse_wall",
+    "2": "deep_ocean",
+    "3": "wooden_dock",
+    "4": "seaweed_patch"
+  },
+  "crates": [
+    { "id": "crate_1", "x": 8, "y": 8, "targetX": 15, "targetY": 8 },
+    { "id": "crate_2", "x": 9, "y": 14, "targetX": 16, "targetY": 11 },
+    { "id": "crate_3", "x": 13, "y": 15, "targetX": 17, "targetY": 11 }
+  ],
+  "brokenBridges": [
+    { "x": 15, "y": 11, "repaired": false, "description": "A broken pier gap over raging currents. Push crates or invoke a Water spirit to cross!" },
+    { "x": 16, "y": 11, "repaired": false, "description": "A broken pier gap over raging currents." }
+  ],
+  "npcs": [
+    {
+      "id": "captain_drake",
+      "name": "Captain Drake",
+      "sprite": "captain",
+      "x": 6,
+      "y": 4,
+      "dialogue": "Ahoy, traveler! An unnatural maelstrom is tearing ships to splinters in the bay. The source is in Smuggler's Cove—an ancient Abyssal Crab twisted by shadow! Cross the broken piers using our cargo crates or a water companion."
+    },
+    {
+      "id": "dockmaster_silas",
+      "name": "Dockmaster Silas",
+      "sprite": "dockworker",
+      "x": 11,
+      "y": 6,
+      "dialogue": "You can push those heavy cargo crates with your shoulders! Slide them into the gaps or onto the pressure hoists."
+    },
+    {
+      "id": "boss_abyssalcrab",
+      "name": "Abyssal Crab",
+      "sprite": "abyssalcrab_corrupt",
+      "x": 20,
+      "y": 14,
+      "isBoss": true,
+      "dialogue": "CLACK-SKRRR! Torrential whirlpools swirl around the gargantuan armored beast!"
+    }
+  ],
+  "interactive": [
+    {
+      "x": 4,
+      "y": 2,
+      "type": "ship_helm",
+      "name": "The Sea Sovereign",
+      "description": "Captain Drake's flagship. Its sails are furled awaiting the clearing of the maelstrom."
+    }
+  ],
+  "triggers": [
+    {
+      "id": "abyssalcrab_boss_trigger",
+      "x": 20,
+      "y": 15,
+      "type": "battle",
+      "spiritId": "abyssalcrab",
+      "isCorrupted": true,
+      "isBoss": true,
+      "fragmentReward": 2
+    }
+  ],
+  "warps": [
+    {
+      "x": 2,
+      "y": 3,
+      "targetMap": "oakhaven",
+      "targetX": 22,
+      "targetY": 20
+    },
+    {
+      "x": 9,
+      "y": 21,
+      "targetMap": "whispering_peaks",
+      "targetX": 3,
+      "targetY": 3,
+      "condition": "fragment_2_collected"
+    },
+    {
+      "x": 10,
+      "y": 21,
+      "targetMap": "whispering_peaks",
+      "targetX": 3,
+      "targetY": 3,
+      "condition": "fragment_2_collected"
+    }
+  ],
+  "wildZones": [
+    {
+      "x": 12,
+      "y": 13,
+      "w": 4,
+      "h": 3,
+      "encounterRate": 0.25,
+      "spirits": ["torrentcrab", "gullgale"]
+    }
+  ]
+}

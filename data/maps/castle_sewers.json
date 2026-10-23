@@ -1,0 +1,100 @@
+{
+  "mapId": "castle_sewers",
+  "mapName": "Royal Sewers & Escape Passage",
+  "act": "Prologue",
+  "width": 22,
+  "height": 18,
+  "theme": "sewers",
+  "spawn": { "x": 2, "y": 3 },
+  "tileData": [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+    [1, 2, 2, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  ],
+  "legend": {
+    "0": "sewer_stone",
+    "1": "sewer_wall",
+    "2": "sewer_water",
+    "4": "slimy_growth"
+  },
+  "npcs": [
+    {
+      "id": "corrupted_starter",
+      "name": "Corrupted Fox Spirit",
+      "sprite": "pyropaw_corrupt",
+      "x": 11,
+      "y": 14,
+      "dialogue": "SKRRREEE! The dark purple miasma writhes violently around this trapped fox spirit! Use your Aegis Core to Cleanse it!"
+    }
+  ],
+  "interactive": [
+    {
+      "x": 2,
+      "y": 2,
+      "type": "ladder",
+      "name": "Castle Sewer Ladder",
+      "description": "The iron ladder leading back to Castle Town. It is barred from above by Malakor's guards."
+    },
+    {
+      "x": 19,
+      "y": 15,
+      "type": "drain_exit",
+      "name": "Outflow Pipe",
+      "description": "Daylight streams through the outflow pipe! It leads out into the pastoral meadows of Oakhaven Village."
+    }
+  ],
+  "triggers": [
+    {
+      "id": "sewer_tutorial_battle",
+      "x": 11,
+      "y": 13,
+      "type": "battle",
+      "spiritId": "pyropaw",
+      "isCorrupted": true,
+      "isTutorial": true
+    }
+  ],
+  "warps": [
+    {
+      "x": 19,
+      "y": 16,
+      "targetMap": "oakhaven",
+      "targetX": 3,
+      "targetY": 4,
+      "condition": "has_companion"
+    },
+    {
+      "x": 20,
+      "y": 16,
+      "targetMap": "oakhaven",
+      "targetX": 3,
+      "targetY": 4,
+      "condition": "has_companion"
+    }
+  ],
+  "wildZones": [
+    {
+      "x": 9,
+      "y": 14,
+      "w": 4,
+      "h": 3,
+      "encounterRate": 0.25,
+      "spirits": ["pyropaw", "sylphwing"]
+    }
+  ]
+}

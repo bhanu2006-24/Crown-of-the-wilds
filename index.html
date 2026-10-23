@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Crown of the Wilds | Retro Fantasy RPG</title>
+  <meta name="description" content="Explore, cleanse corrupted spirits, and reclaim your throne in Crown of the Wilds. Fullscreen retro top-down RPG.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- Fullscreen Game Canvas Container -->
+  <div id="game-container">
+    <canvas id="game-canvas" width="640" height="360" aria-label="Crown of the Wilds"></canvas>
+
+    <!-- Floating In-Game Top HUD -->
+    <div id="in-game-hud" class="floating-hud">
+      <div class="hud-left">
+        <span class="hud-crystal-icon">◈</span>
+        <span class="hud-location-name" id="hud-location-text">Castle Town</span>
+        <span class="hud-act-badge" id="hud-act-text">Prologue</span>
+      </div>
+
+      <div class="hud-center" id="hud-objective-pill">
+        <span class="obj-dot"></span>
+        <span class="obj-text" id="hud-objective-text">Enter the Aegis Sanctum to meet Lord Malakor</span>
+      </div>
+
+      <div class="hud-right">
+        <button id="btn-fullscreen" class="hud-icon-btn" title="Toggle Fullscreen (F)">
+          <span class="btn-symbol">⛶</span>
+          <span class="btn-label">Fullscreen</span>
+        </button>
+        <button id="btn-sound-toggle" class="hud-icon-btn" title="Toggle Sound (M)">
+          <span class="btn-symbol" id="sound-icon">🔊</span>
+        </button>
+        <button id="btn-ingame-menu" class="hud-menu-btn" title="Open Menu (Esc / X)">
+          <span class="btn-symbol">☰</span>
+          <span class="btn-label">MENU</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Retro In-Game Pause Menu (Tapped via MENU or Esc/X) -->
+    <div id="pause-menu-overlay" class="pause-overlay" onclick="if(event.target === this) Game.toggleMenu();">
+      <div class="rpg-menu-window">
+        <div class="menu-window-header">
+          <div class="menu-hero-summary">
+            <div class="hero-avatar" id="menu-hero-avatar"></div>
+            <div class="hero-details">
+              <h2 class="hero-name">Princess Aurelia</h2>
+              <div class="hero-title" id="menu-hero-title">Royal Heir of the Realm</div>
+              <div class="hero-status-row">
+                <span class="frag-badge">Aegis Crystal: <strong id="menu-frag-count">Core (1/4)</strong></span>
+                <span class="act-badge" id="menu-act-badge">Prologue</span>
+              </div>
+            </div>
+          </div>
+          <button class="menu-close-cross" onclick="Game.toggleMenu();">&times;</button>
+        </div>
+
+        <div class="menu-window-content">
+          <div class="rpg-options-list">
+            <button class="rpg-menu-item" onclick="UI.openPartyModal();">
+              <span class="item-icon">🐾</span>
+              <div class="item-text">
+                <span class="item-title">AURA SPIRITS</span>
+                <span class="item-sub">View companions, stats, & lead</span>
+              </div>
+              <span class="item-arrow">►</span>
+            </button>
+
+            <button class="rpg-menu-item" onclick="UI.openBagModal();">
+              <span class="item-icon">🎒</span>
+              <div class="item-text">
+                <span class="item-title">TRAVELING BAG</span>
+                <span class="item-sub">Salves, Elixirs, and Purifying Incense</span>
+              </div>
+              <span class="item-arrow">►</span>
+            </button>
+
+            <button class="rpg-menu-item" onclick="UI.openCodexModal();">
+              <span class="item-icon">📜</span>
+              <div class="item-text">
+                <span class="item-title">QUEST CODEX & LORE</span>
+                <span class="item-sub">Objectives, elemental affinities, & world acts</span>
+              </div>
+              <span class="item-arrow">►</span>
+            </button>
+
+            <button class="rpg-menu-item" onclick="Game.saveProgress();">
+              <span class="item-icon">💾</span>
+              <div class="item-text">
+                <span class="item-title">SAVE PROGRESS</span>
+                <span class="item-sub">Record current journey checkpoint</span>
+              </div>
+              <span class="item-arrow">►</span>
+            </button>
+
+            <button class="rpg-menu-item" onclick="SoundEngine.toggleMute(); UI.updateSoundUI();">
+              <span class="item-icon">🔊</span>
+              <div class="item-text">
+                <span class="item-title">AUDIO & MUSIC</span>
+                <span class="item-sub" id="menu-audio-sub">Mute or enable chiptunes and SFX</span>
+              </div>
+              <span class="item-arrow">►</span>
+            </button>
+
+            <button class="rpg-menu-item resume-item" onclick="Game.toggleMenu();">
+              <span class="item-icon">✕</span>
+              <div class="item-text">
+                <span class="item-title">RESUME GAME</span>
+                <span class="item-sub">Return to exploration</span>
+              </div>
+              <span class="item-arrow">►</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Virtual Touch On-Screen D-Pad (For Mobile / Touch devices) -->
+    <div class="virtual-controls" id="virtual-touch-controls">
+      <div class="dpad-cluster">
+        <button id="btn-up" class="dpad-btn up" aria-label="Up">▲</button>
+        <div class="dpad-middle-row">
+          <button id="btn-left" class="dpad-btn left" aria-label="Left">◀</button>
+          <div class="dpad-center"></div>
+          <button id="btn-right" class="dpad-btn right" aria-label="Right">▶</button>
+        </div>
+        <button id="btn-down" class="dpad-btn down" aria-label="Down">▼</button>
+      </div>
+
+      <div class="action-cluster">
+        <button id="btn-b" class="circle-btn b-btn" aria-label="Menu or Cancel">
+          <span>B</span>
+          <small>Menu</small>
+        </button>
+        <button id="btn-a" class="circle-btn a-btn" aria-label="Action">
+          <span>A</span>
+          <small>Action</small>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Companion Party -->
+  <div id="party-modal" class="modal-overlay" onclick="if(event.target === this) UI.closeModal('party-modal');">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title">🐾 Companion Aura Spirits</h2>
+        <button class="close-btn" onclick="UI.closeModal('party-modal');">&times;</button>
+      </div>
+      <div class="modal-body" id="party-list"></div>
+      <div class="modal-footer">
+        <p class="modal-help">Select "Make Lead" to send that spirit into battle first.</p>
+        <button class="secondary-btn" onclick="UI.closeModal('party-modal');">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Inventory Bag -->
+  <div id="bag-modal" class="modal-overlay" onclick="if(event.target === this) UI.closeModal('bag-modal');">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title">🎒 Royal Traveling Bag</h2>
+        <button class="close-btn" onclick="UI.closeModal('bag-modal');">&times;</button>
+      </div>
+      <div class="modal-body" id="bag-list"></div>
+      <div class="modal-footer">
+        <button class="secondary-btn" onclick="UI.closeModal('bag-modal');">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Chronicles Codex -->
+  <div id="codex-modal" class="modal-overlay" onclick="if(event.target === this) UI.closeModal('codex-modal');">
+    <div class="modal-card codex-card">
+      <div class="modal-header">
+        <h2 class="modal-title">📜 The Chronicles of Aegis</h2>
+        <button class="close-btn" onclick="UI.closeModal('codex-modal');">&times;</button>
+      </div>
+      <div class="modal-body codex-body">
+        <section class="codex-section">
+          <h3>The Core Premise</h3>
+          <p>You play as <strong>Princess Aurelia</strong>. When Lord Malakor shatters the kingdom's sacred <strong>Aegis Crystal</strong>, the peaceful Aura Spirits become corrupted. Disguised in traveling clothes, you must explore the realm, cleanse the spirits to make them companions, recover the 3 lost crystal fragments, and reclaim your throne!</p>
+        </section>
+
+        <section class="codex-section">
+          <h3>Active Mechanics in Playable Prologue</h3>
+          <p>1. <strong>Castle Town</strong>: Speak with Scholar Alistair, Chancellor Vance, and confront Lord Malakor in the Sanctum.<br>
+             2. <strong>The Shattering</strong>: Watch the crystal break and escape into the secret sewers.<br>
+             3. <strong>The Royal Sewers</strong>: Explore the undercroft, fight the Corrupted Fox Spirit, and use <strong>Cleanse</strong> to recruit Pyropaw as your loyal companion!</p>
+        </section>
+
+        <section class="codex-section">
+          <h3>Controls</h3>
+          <p>• <strong>Movement</strong>: WASD, Arrow Keys, or Click/Tap anywhere on map.<br>
+             • <strong>Action / Interact</strong>: Space, Enter, Z, or Click.<br>
+             • <strong>Pause Menu</strong>: Esc, X, or top-right MENU button.<br>
+             • <strong>Fullscreen</strong>: F key or top-right Fullscreen button.</p>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-btn" onclick="UI.closeModal('codex-modal');">Close Codex</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME SCRIPTS -->
+  <script src="assets/tile_generator.js"></script>
+  <script src="assets/sprite_generator.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/maps_registry.js"></script>
+  <script src="js/dialogue.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/quest_engine.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/map_engine.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

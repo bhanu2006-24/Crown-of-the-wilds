@@ -1,0 +1,102 @@
+{
+  "mapId": "castle_restored",
+  "mapName": "Castle Town Restored - The Queen's Coronation",
+  "act": "Epilogue",
+  "width": 24,
+  "height": 20,
+  "theme": "castle_restored",
+  "spawn": { "x": 12, "y": 14 },
+  "tileData": [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 9, 9, 9, 9, 9, 9, 9, 9, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 9, 0, 0, 7, 7, 0, 0, 9, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 9, 0, 0, 8, 8, 0, 0, 9, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 9, 0, 0, 0, 0, 0, 0, 9, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 6, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 6, 0, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1]
+  ],
+  "legend": {
+    "0": "golden_marble",
+    "1": "radiant_wall",
+    "3": "golden_carpet",
+    "6": "flower_pillar",
+    "7": "aegis_crystal_whole",
+    "8": "sanctum_pedestal",
+    "9": "sanctum_arch"
+  },
+  "npcs": [
+    {
+      "id": "queen_scholar",
+      "name": "Grand Scholar Alistair",
+      "sprite": "scholar",
+      "x": 8,
+      "y": 5,
+      "dialogue": "Long live Queen Aurelia! The Aegis Crystal is restored to radiant wholeness! The spirits and mortals walk together once more."
+    },
+    {
+      "id": "queen_vance",
+      "name": "Chancellor Vance",
+      "sprite": "chancellor",
+      "x": 15,
+      "y": 5,
+      "dialogue": "By royal decree, the castle gates shall forever remain open! A ruler true to her people and the wild."
+    },
+    {
+      "id": "epilogue_cedric",
+      "name": "Mayor Cedric",
+      "sprite": "mayor",
+      "x": 9,
+      "y": 10,
+      "dialogue": "The rivers of Oakhaven flow with crystal clarity! Our cattle graze peacefully under the golden dawn."
+    },
+    {
+      "id": "epilogue_drake",
+      "name": "Admiral Drake",
+      "sprite": "captain",
+      "x": 14,
+      "y": 10,
+      "dialogue": "The harbor mists are gone! Rustport's ships set sail under fair winds and quiet tides!"
+    },
+    {
+      "id": "epilogue_kaelen",
+      "name": "High Monk Kaelen",
+      "sprite": "monk",
+      "x": 11,
+      "y": 12,
+      "dialogue": "The demon shadow is cleansed and sealed into pure light. You have achieved what ten generations of kings could not."
+    },
+    {
+      "id": "epilogue_starter",
+      "name": "Your Companion Spirit",
+      "sprite": "pyropaw_clean",
+      "x": 13,
+      "y": 12,
+      "dialogue": "WARM YIP! Pyropaw nudges your hand affectionally, its golden flame dancing with pride!"
+    }
+  ],
+  "interactive": [
+    {
+      "x": 12,
+      "y": 2,
+      "type": "repaired_crystal",
+      "name": "The Aegis Crystal",
+      "description": "The four fragments are unified into a radiant beacon of pure harmony."
+    }
+  ],
+  "triggers": [],
+  "warps": [],
+  "wildZones": []
+}

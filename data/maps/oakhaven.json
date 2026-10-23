@@ -1,0 +1,146 @@
+{
+  "mapId": "oakhaven",
+  "mapName": "Oakhaven Village - Pastoral Lands",
+  "act": "Act 1",
+  "width": 26,
+  "height": 22,
+  "theme": "pastoral",
+  "spawn": { "x": 3, "y": 4 },
+  "tileData": [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 1, 1, 0, 0, 0, 0, 4, 4, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 1],
+    [1, 0, 0, 1, 1, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 1],
+    [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1]
+  ],
+  "legend": {
+    "0": "meadow_grass",
+    "1": "dense_trees",
+    "2": "polluted_river",
+    "4": "tall_wild_grass",
+    "5": "farm_crops"
+  },
+  "npcs": [
+    {
+      "id": "mayor_cedric",
+      "name": "Mayor Cedric",
+      "sprite": "mayor",
+      "x": 6,
+      "y": 6,
+      "dialogue": "Traveler! The river has turned a ghastly purple! Our sacred sweeping-horned cattle are terrified and frenzied. Upriver at the weir, a titanic Mud-Toad is corrupting the spring!"
+    },
+    {
+      "id": "farmer_barnaby",
+      "name": "Farmer Barnaby",
+      "sprite": "farmer",
+      "x": 19,
+      "y": 3,
+      "dialogue": "My prize cattle, Bramblehorn, bolted toward the marsh! If you can soothe them with your Aura, they will gladly protect you."
+    },
+    {
+      "id": "boss_mudtoad",
+      "name": "Goliath Mud-Toad",
+      "sprite": "mudtoad_corrupt",
+      "x": 13,
+      "y": 2,
+      "isBoss": true,
+      "dialogue": "CROOOAAAK! Toxic violet slime erupts as the Mud-Toad bares its glowing crystal shard!"
+    }
+  ],
+  "interactive": [
+    {
+      "x": 13,
+      "y": 6,
+      "type": "bridge",
+      "name": "Old Willow Bridge",
+      "description": "A sturdy wooden bridge spanning the river. Below, the water churns with purple miasma."
+    },
+    {
+      "x": 20,
+      "y": 5,
+      "type": "sacred_shrine",
+      "name": "Shrine of the Wilds",
+      "description": "An ancient stone shrine where resting spirits recover their vigor and health."
+    }
+  ],
+  "triggers": [
+    {
+      "id": "mudtoad_boss_trigger",
+      "x": 13,
+      "y": 3,
+      "type": "battle",
+      "spiritId": "mudtoad",
+      "isCorrupted": true,
+      "isBoss": true,
+      "fragmentReward": 1
+    }
+  ],
+  "warps": [
+    {
+      "x": 2,
+      "y": 3,
+      "targetMap": "castle_sewers",
+      "targetX": 19,
+      "targetY": 15
+    },
+    {
+      "x": 22,
+      "y": 21,
+      "targetMap": "rustport",
+      "targetX": 3,
+      "targetY": 3,
+      "condition": "fragment_1_collected"
+    },
+    {
+      "x": 23,
+      "y": 21,
+      "targetMap": "rustport",
+      "targetX": 3,
+      "targetY": 3,
+      "condition": "fragment_1_collected"
+    }
+  ],
+  "wildZones": [
+    {
+      "x": 8,
+      "y": 5,
+      "w": 4,
+      "h": 4,
+      "encounterRate": 0.25,
+      "spirits": ["bramblehorn", "sylphwing"]
+    },
+    {
+      "x": 4,
+      "y": 11,
+      "w": 4,
+      "h": 4,
+      "encounterRate": 0.25,
+      "spirits": ["sylphwing", "bloomseed"]
+    },
+    {
+      "x": 17,
+      "y": 15,
+      "w": 5,
+      "h": 3,
+      "encounterRate": 0.3,
+      "spirits": ["bramblehorn", "sparklynx"]
+    }
+  ]
+}
